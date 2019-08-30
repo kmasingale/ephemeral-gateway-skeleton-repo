@@ -18,3 +18,13 @@ kevin/kevin1:
   - "PUT"
   properties: {}
   wssProcessingEnabled: false
+kevin/test/testagain/kevintestagain:
+  url: "/kevintestagain"
+  policy: "kevin/test/testagain/kevintestagain"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
