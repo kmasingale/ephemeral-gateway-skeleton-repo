@@ -1,0 +1,10 @@
+kevin/test3:
+  url: "/test3"
+  policy: "kevin/test3"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false

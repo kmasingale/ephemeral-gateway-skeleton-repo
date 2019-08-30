@@ -1,0 +1,10 @@
+example/test:
+  url: "/test"
+  policy: "example/test"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
