@@ -1,8 +1,0 @@
-testReqSSL:
-  policy: "kevin/testReqSSL"
-  arguments: []
-  results: []
-  properties:
-    paletteFolder: "accessControl"
-    allowTracing: "false"
-    passMetricsToParent: "false"

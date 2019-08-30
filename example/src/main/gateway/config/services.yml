@@ -1,6 +1,6 @@
-example/test:
-  url: "/test"
-  policy: "example/test"
+example/example1:
+  url: "/example1"
+  policy: "example/example1"
   httpMethods:
   - "DELETE"
   - "POST"

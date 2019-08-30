@@ -22,7 +22,9 @@ subprojects {
     if (!project.name.equals('deployment')) {
         apply plugin: 'com.ca.apim.gateway.gateway-export-plugin'
         GatewayConnection {
-            url = 'https://localhost:8443/restman'
+            url = 'https://k8sgw.layer7.broadcom.com:8443/restman'
+            userName = 'admin'
+            userPass = 'password'
         }
     }
 
