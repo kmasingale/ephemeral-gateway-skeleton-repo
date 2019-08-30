@@ -5,4 +5,6 @@
  */
 
 dependencies {
+    bundle project(':example')
+    bundle project(':kevin')
 }
