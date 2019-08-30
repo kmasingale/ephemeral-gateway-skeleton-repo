@@ -6,4 +6,4 @@
 
 rootProject.name = 'mycicdproject'
 
-include 'deployment', 'example', 'cicd'
+include 'deployment', 'example', 'kevin'
