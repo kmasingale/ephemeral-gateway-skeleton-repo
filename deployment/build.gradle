@@ -7,4 +7,5 @@
 dependencies {
     bundle project(':example')
     bundle project(':kevin')
+    //bundle project(':kevin/test')
 }
