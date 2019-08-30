@@ -1,26 +1,6 @@
-kevin/test/kevin1test:
-  url: "/kevin1test"
-  policy: "kevin/test/kevin1test"
-  httpMethods:
-  - "DELETE"
-  - "POST"
-  - "GET"
-  - "PUT"
-  properties: {}
-  wssProcessingEnabled: false
 kevin/kevin1:
   url: "/kevin1"
   policy: "kevin/kevin1"
-  httpMethods:
-  - "DELETE"
-  - "POST"
-  - "GET"
-  - "PUT"
-  properties: {}
-  wssProcessingEnabled: false
-kevin/test/testagain/kevintestagain:
-  url: "/kevintestagain"
-  policy: "kevin/test/testagain/kevintestagain"
   httpMethods:
   - "DELETE"
   - "POST"
