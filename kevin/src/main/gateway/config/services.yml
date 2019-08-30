@@ -8,3 +8,13 @@ kevin/kevin1:
   - "PUT"
   properties: {}
   wssProcessingEnabled: false
+kevin/folder1/kevin2:
+  url: "/kevin2"
+  policy: "kevin/folder1/kevin2"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
