@@ -1,0 +1,30 @@
+kevin/kevin1:
+  url: "/kevin1"
+  policy: "kevin/kevin1"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+kevin/folder2/folder2:
+  url: "/folder2"
+  policy: "kevin/folder2/folder2"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+kevin/folder1/kevin2:
+  url: "/kevin2"
+  policy: "kevin/folder1/kevin2"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false

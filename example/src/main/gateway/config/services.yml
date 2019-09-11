@@ -1,0 +1,20 @@
+example/folder1/example2:
+  url: "/example2"
+  policy: "example/folder1/example2"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+example/example1:
+  url: "/example1"
+  policy: "example/example1"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
