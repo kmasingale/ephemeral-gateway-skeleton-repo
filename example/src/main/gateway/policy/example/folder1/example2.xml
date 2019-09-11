@@ -2,7 +2,7 @@
     <wsp:All wsp:Usage="Required">
         <L7p:HardcodedResponse>
             <L7p:ResponseBody><![CDATA[Hello World from example\folder1\example2! It sure has been fun today y'all again!
-Kevin Cluster Wide Property ${gateway.Test}]]></L7p:ResponseBody>
+Kevin Cluster Wide Property ${gateway.otk.port}]]></L7p:ResponseBody>
             <L7p:ResponseContentType stringValue="text/plain; charset=UTF-8"/>
         </L7p:HardcodedResponse>
     </wsp:All>
