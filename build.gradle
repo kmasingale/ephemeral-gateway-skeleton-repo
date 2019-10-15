@@ -22,13 +22,13 @@ subprojects {
     if (!project.name.equals('deployment')) {
         apply plugin: 'com.ca.apim.gateway.gateway-export-plugin'
         GatewayConnection {
-            url = 'https://k8sgw.layer7.broadcom.com:8443/restman'
+            url = 'https://localhost:8444/restman'
             userName = 'admin'
-            userPass = 'password'
+            userPass = '7layer'
         }
     }
 
-    group 'mycicd'
+    group 'com.ca.apim.gateway'
     version = '1.0.0'
 
     repositories {

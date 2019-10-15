@@ -5,22 +5,60 @@
 version: '3.4'
 services:
   gateway-dev:
-    hostname: localhost
+    hostname: devgw.eks.layer7.broadcom.com
     image: caapim/gateway:9.4.00
     ports:
-    - "8080:8080"
-    - "8443:8443"
+    - "8081:8080"
+    - "8444:8443"
     - "8000:8000"
     volumes:
     - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
     - ./deployment/build/gateway/deployment-1.0.0.gw7:/opt/docker/rc.d/deployment.gw7
+    #- ./AWS-SK/src/main/gateway/config/global-env.properties:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/env/global-env.properties
+    - ./Enterprise/src/main/gateway/config/global-env.properties:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/env/global-env.properties
+    - ./Enterprise/src/main/gateway/config/privateKeys:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/env/config/privateKeys
+    #- ./Enterprise/src/main/gateway/config/certificates:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/certificates
     secrets:
     - source: license
       target: /opt/SecureSpan/Gateway/node/default/etc/bootstrap/license/license.xml
     environment:
       ACCEPT_LICENSE: "true"
       SSG_ADMIN_USERNAME: "admin"
-      SSG_ADMIN_PASSWORD: "password"
+      SSG_ADMIN_PASSWORD: "7layer"
+      ENV.PRIVATE_KEY.ssl: '{ "keystore": "Generic", "algorithm": "RSA", "keyPassword": "7layer" }'
+      ENV.CERTIFICATE.devgw.eks.layer7.broadcom.com.client: '{
+                      "verifyHostname" : false,
+                      "trustedForSsl" : true,
+                      "trustedAsSamlAttestingEntity" : true,
+                      "trustAnchor" : true,
+                      "revocationCheckingEnabled" : true,
+                      "trustedForSigningClientCerts" : true,
+                      "trustedForSigningServerCerts" : true,
+                      "trustedAsSamlIssuer" : true
+                      }'
+      ENV.CERTIFICATE_FILE.devgw.eks.layer7.broadcom.com.client.pem: |-
+                        Bag Attributes
+                            friendlyName: ssl
+                            localKeyID: 03 81 04 03 F6 95 B1 F5 DD C3 7F 7D 3D 57 C8 61 00 7D 5B 41 
+                        subject=/CN=devgw.eks.layer7.broadcom.com
+                        issuer=/CN=devgw.eks.layer7.broadcom.com
+                        -----BEGIN CERTIFICATE-----
+                        MIICzDCCAbQCCQCiuvm+gBaJwjANBgkqhkiG9w0BAQsFADAoMSYwJAYDVQQDDB1k
+                        ZXZndy5la3MubGF5ZXI3LmJyb2FkY29tLmNvbTAeFw0xOTEwMDIxODU1MjhaFw0y
+                        OTA5MjkxODU1MjhaMCgxJjAkBgNVBAMMHWRldmd3LmVrcy5sYXllcjcuYnJvYWRj
+                        b20uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAutm3KPSHYm0P
+                        zsiq/wd3xmhq1T7wm3KZS+kiJr/EsLxMFBHX8h+ZHNH1tFRyu0YTfSRt2SjVCKcv
+                        SQjzwSwescoWdXLBTNK4K5FbDEjVtohRHuogdOT+Q6KrZb0dtjH1lcedp6y/xC/L
+                        MbG+IKoj8Hr40tiAl5b6J/dyA9FYF9GxzDGPC4Qug4tb6C8RM3FxRRhQhu/WoJZ5
+                        u3YRiiv7CH65ITyJ6mGzBUDkWXvB8O9Fgqbx2DASc8l9AjtSw5UQJwY/5QjOEM44
+                        6zOOfoqaXwL7X9LZ+zk+2b08gnUJNmQfSyMPRFnY4gL414aaVrXT0Er/7Hm1xtWA
+                        1zSn8QRpiQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAHNeADH0uD1rNUge/XW7lW
+                        ghD1kbyrIFHzOoQv8cHmsraaoB7o2uLriiYKqy5TvidSato32jKw62CoBN9ZuBEQ
+                        Z+J9RTqYUEblELx4dhE1fv9Cw7W7TYui/Zy+IiBlo/OzIkivL9GS5XDCqVpLnVs2
+                        CSqqaIasyi2H5ESd8c6N41uY09w6eb0FbtwIaYd2s8AeX6G6hPJSvKSz71Cl8FhG
+                        +NX3NhYkdPQrE93KeSO2vejPH75+gg0opl4N5oMxOYggL5KV/lDpoICs77KUPHi1
+                        MahOf5T/Prq4K/t6VT8TUx/DuK/i0DXXSZj0KpasDpSPz4EC0ECpAIIa6ECF9wBE
+                        -----END CERTIFICATE-----
 secrets:
   license:
     file: ./docker/license.xml

@@ -4,6 +4,6 @@
  *  of the MIT license.  See the LICENSE file for details.
  */
 
-rootProject.name = 'mycicdproject'
+rootProject.name = 'gatewaycicd'
 
-include 'deployment', 'example', 'kevin'
+include 'deployment', 'Enterprise', 'gmu', 'AWS-SK1'
