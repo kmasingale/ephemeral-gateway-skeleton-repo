@@ -188,3 +188,13 @@ Enterprise/Proxies/test:
   - "PUT"
   properties: {}
   wssProcessingEnabled: false
+Enterprise/DFDL/DFDL CSV Parser:
+  url: "/dfdl"
+  policy: "Enterprise/DFDL/DFDL CSV Parser"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
