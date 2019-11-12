@@ -5,10 +5,10 @@
 version: '3.4'
 services:
   gateway-dev:
-    hostname: devgw.eks.layer7.broadcom.com
+    hostname: dockgw.layer7.broadcom.com
     image: caapim/gateway:9.4.00
     ports:
-    - "8081:8080"
+    - "8082:8080"
     - "8444:8443"
     - "8000:8000"
     volumes:
@@ -26,7 +26,7 @@ services:
       SSG_ADMIN_USERNAME: "admin"
       SSG_ADMIN_PASSWORD: "7layer"
       ENV.PRIVATE_KEY.ssl: '{ "keystore": "Generic", "algorithm": "RSA", "keyPassword": "7layer" }'
-      ENV.CERTIFICATE.devgw.eks.layer7.broadcom.com.client: '{
+      ENV.CERTIFICATE.star.layer7.broadcom.com.client: '{
                       "verifyHostname" : false,
                       "trustedForSsl" : true,
                       "trustedAsSamlAttestingEntity" : true,
@@ -36,28 +36,48 @@ services:
                       "trustedForSigningServerCerts" : true,
                       "trustedAsSamlIssuer" : true
                       }'
-      ENV.CERTIFICATE_FILE.devgw.eks.layer7.broadcom.com.client.pem: |-
+      ENV.CERTIFICATE_FILE.star.layer7.broadcom.com.client.pem: |-
                         Bag Attributes
                             friendlyName: ssl
-                            localKeyID: 03 81 04 03 F6 95 B1 F5 DD C3 7F 7D 3D 57 C8 61 00 7D 5B 41 
-                        subject=/CN=devgw.eks.layer7.broadcom.com
-                        issuer=/CN=devgw.eks.layer7.broadcom.com
+                            localKeyID: 95 1F 81 A9 4F 78 E8 06 71 61 64 E9 88 D7 85 2C C7 27 8B D2 
+                        subject=/OU=Domain Control Validated/OU=PositiveSSL Wildcard/CN=*.layer7.broadcom.com
+                        issuer=/C=GB/ST=Greater Manchester/L=Salford/O=Sectigo Limited/CN=Sectigo RSA Domain Validation Secure Server CA
                         -----BEGIN CERTIFICATE-----
-                        MIICzDCCAbQCCQCiuvm+gBaJwjANBgkqhkiG9w0BAQsFADAoMSYwJAYDVQQDDB1k
-                        ZXZndy5la3MubGF5ZXI3LmJyb2FkY29tLmNvbTAeFw0xOTEwMDIxODU1MjhaFw0y
-                        OTA5MjkxODU1MjhaMCgxJjAkBgNVBAMMHWRldmd3LmVrcy5sYXllcjcuYnJvYWRj
-                        b20uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAutm3KPSHYm0P
-                        zsiq/wd3xmhq1T7wm3KZS+kiJr/EsLxMFBHX8h+ZHNH1tFRyu0YTfSRt2SjVCKcv
-                        SQjzwSwescoWdXLBTNK4K5FbDEjVtohRHuogdOT+Q6KrZb0dtjH1lcedp6y/xC/L
-                        MbG+IKoj8Hr40tiAl5b6J/dyA9FYF9GxzDGPC4Qug4tb6C8RM3FxRRhQhu/WoJZ5
-                        u3YRiiv7CH65ITyJ6mGzBUDkWXvB8O9Fgqbx2DASc8l9AjtSw5UQJwY/5QjOEM44
-                        6zOOfoqaXwL7X9LZ+zk+2b08gnUJNmQfSyMPRFnY4gL414aaVrXT0Er/7Hm1xtWA
-                        1zSn8QRpiQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAHNeADH0uD1rNUge/XW7lW
-                        ghD1kbyrIFHzOoQv8cHmsraaoB7o2uLriiYKqy5TvidSato32jKw62CoBN9ZuBEQ
-                        Z+J9RTqYUEblELx4dhE1fv9Cw7W7TYui/Zy+IiBlo/OzIkivL9GS5XDCqVpLnVs2
-                        CSqqaIasyi2H5ESd8c6N41uY09w6eb0FbtwIaYd2s8AeX6G6hPJSvKSz71Cl8FhG
-                        +NX3NhYkdPQrE93KeSO2vejPH75+gg0opl4N5oMxOYggL5KV/lDpoICs77KUPHi1
-                        MahOf5T/Prq4K/t6VT8TUx/DuK/i0DXXSZj0KpasDpSPz4EC0ECpAIIa6ECF9wBE
+                        MIIGijCCBXKgAwIBAgIQPRVihgdAtQUBSY9qtzM+7zANBgkqhkiG9w0BAQsFADCB
+                        jzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
+                        A1UEBxMHU2FsZm9yZDEYMBYGA1UEChMPU2VjdGlnbyBMaW1pdGVkMTcwNQYDVQQD
+                        Ey5TZWN0aWdvIFJTQSBEb21haW4gVmFsaWRhdGlvbiBTZWN1cmUgU2VydmVyIENB
+                        MB4XDTE5MTAxNzAwMDAwMFoXDTIxMTAxNjIzNTk1OVowYjEhMB8GA1UECxMYRG9t
+                        YWluIENvbnRyb2wgVmFsaWRhdGVkMR0wGwYDVQQLExRQb3NpdGl2ZVNTTCBXaWxk
+                        Y2FyZDEeMBwGA1UEAwwVKi5sYXllcjcuYnJvYWRjb20uY29tMIIBIjANBgkqhkiG
+                        9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtA1pn7rEjTQkzpk506jooVjDJZ/HoFS0e4j
+                        SgN8UxwJw225PEvM04OfrxSO+wKzpsUKYD3RJ+awMFx+p7ufju/ixooyA6jjLdiX
+                        n73Nznxt/1NEWSG+dnRKPHrTwZCFW3aV4AUYjVdGyzbSA0IrrxGcBgDcZSlrDYQq
+                        RUPVT8pTYVZKs/F4TwTNelf2w2CjdUiTdFamRN1+VbQzpm3mZkgO5b2ENYW7+J72
+                        PAQBvq+J2mjeD5pzQw5A3yTCXImxD/kkAO82MdLsH+c9oPXOrdBalEutIBj3YHYV
+                        9Hkq9fDjCwXlNbr9NmT6sTYLp9+h0P7in47kCdozhNz5UPWqEwIDAQABo4IDDDCC
+                        AwgwHwYDVR0jBBgwFoAUjYxexFStiuF36Zv5mwXhuAGNYeEwHQYDVR0OBBYEFDXK
+                        kRTsmfk9GJl5rioEgT2BiupwMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA
+                        MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBJBgNVHSAEQjBAMDQGCysG
+                        AQQBsjEBAgIHMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BT
+                        MAgGBmeBDAECATCBhAYIKwYBBQUHAQEEeDB2ME8GCCsGAQUFBzAChkNodHRwOi8v
+                        Y3J0LnNlY3RpZ28uY29tL1NlY3RpZ29SU0FEb21haW5WYWxpZGF0aW9uU2VjdXJl
+                        U2VydmVyQ0EuY3J0MCMGCCsGAQUFBzABhhdodHRwOi8vb2NzcC5zZWN0aWdvLmNv
+                        bTA1BgNVHREELjAsghUqLmxheWVyNy5icm9hZGNvbS5jb22CE2xheWVyNy5icm9h
+                        ZGNvbS5jb20wggF+BgorBgEEAdZ5AgQCBIIBbgSCAWoBaAB2AH0+8viP/4hVaCTC
+                        wMqeUol5K8UOeAl/LmqXaJl+IvDXAAABbdrXE58AAAQDAEcwRQIhAJy9guis7Nbt
+                        66WRIoHQ0aaCoJZPMBfdgJoV2p8FDgR0AiAwg35EmytyEOkznytNOZX7lGv9jyXT
+                        APaFtewWAMQHqgB3AESUZS6w7s6vxEAH2Kj+KMDa5oK+2MsxtT/TM5a1toGoAAAB
+                        bdrXE5gAAAQDAEgwRgIhAOZcEkKMuVQzg8CX1t8QoxDjMXzNO75n/kLOX/AOC/G8
+                        AiEAjZoUlwmHS2Zg62PTqKkW28sGCbMCy8+tqn1q70QpdDIAdQBVgdTCFpA2AUrq
+                        C5tXPFPwwOQ4eHAlCBcvo6odBxPTDAAAAW3a1xPIAAAEAwBGMEQCIEgX+2gmXaHX
+                        enK/lrcPg8bVMfnbfpngMs2NSyP3fXg1AiBlV9M2l9tgKKKNEuZzyJ5wbR/7Rv82
+                        6oYDOtlXsVBlDjANBgkqhkiG9w0BAQsFAAOCAQEAxbyTfVkYBbAeh5J1rQuZWeG+
+                        bk0cTPROJX3LvyahUHvznHiEKk74AyuqMMPrRo9ujC0hI+xQPTjzJqEUcTIhxT8r
+                        oWNdOkUjrWYYIQfz6CgnWbOI9dfKEi5yma4ogBiNSysD4jTA0TVh7I7jzUMygWzE
+                        nkxGzZAhgaaPLIKrJ3aLF4yD/Lg4bYalaFT6JwHcABma8PiGEzdlHLN+qhS27P61
+                        Dm8owff1iEKbLdsUprI2HhpgLsQdw4ZWKBGvsPQYWEgEZYcSyACYghzPvblkIhCt
+                        eeBSNXTXU5syKD8YsLmuWTzFRU0I0lBzkVkjkxX0E6x8Xdy1hou42ZEqfwN0OA==
                         -----END CERTIFICATE-----
 secrets:
   license:
